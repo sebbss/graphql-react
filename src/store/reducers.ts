@@ -1,45 +1,27 @@
-import { GET_PEOPLE, GET_PERSON, SEARCH_PEOPLE } from './actionTypes'
+import { LOADING } from './actionTypes'
 
-const initialPeopleState = {
-    poeple: []
+interface LoadState{
+    loading:boolean
 }
 
-const initialPersonState = {
-    person: {}
+const initialState: LoadState = {
+   loading: false
 }
 
-export const peopleReducer = (state = initialPeopleState, action: PeopleAction)=>{
+
+const reducer =  (state = initialState, action: Action): LoadState=>{
 
     switch(action.type){
-        case GET_PEOPLE:
+        case LOADING:
             return{
                 ...state,
-                people: action.payload
-            }
-        case SEARCH_PEOPLE:
-            return{
-                ...state,
-                people: action.payload
+                loading: action.loading
             }
         default:
             return {
-                state
+                ...state
             }
     }
 }
 
-export const personReducer = (state = initialPersonState, action: PersonAction)=>{
-
-    switch(action.type){
-        case GET_PERSON:
-            return{
-                ...state,
-                people: action.payload
-            }
-        
-        default:
-            return {
-                state
-            }
-    }
-}
+export default reducer

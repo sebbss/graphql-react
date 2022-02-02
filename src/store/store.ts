@@ -1,12 +1,12 @@
-import { createStore, applyMiddleware, combineReducers } from "redux"
-import thunk from "redux-thunk"
-import { createGQLClient } from "./graphl-client"
-import {peopleReducer,personReducer} from "./reducers"
+import { createStore, combineReducers } from "redux"
 
-const rootReducer = combineReducers({
-    peopleReducer,
-    personReducer
+import reducer from './reducers'
+
+export const rootReducer = combineReducers({
+    loading :reducer
 })
 
+export type LoadingState = ReturnType< typeof rootReducer> 
 
-export default createStore(rootReducer, applyMiddleware(thunk.withExtraArgument({client: createGQLClient})))
+
+export default createStore(rootReducer)

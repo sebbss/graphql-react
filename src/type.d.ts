@@ -6,20 +6,20 @@ interface IPerson{
     homeworld: string
 }
 
-type PeopleState = {
-    people: IPerson[] | []
+type PeopleResult = {
+    fetchPeople?:{
+        results?: IPerson[] 
+        count:number
+    }
+    
 }
 
 type PersonState = {
     person: IPerson | {}
 }
 
-type PeopleAction = {
+type Action = {
     type: string
-    payload: PeopleState
+    loading: boolean
 }
 
-type PersonAction = {
-    type: string
-    payload: PersonState
-}
