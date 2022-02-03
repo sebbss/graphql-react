@@ -14,8 +14,8 @@ type PeopleResult = {
     
 }
 
-type PersonState = {
-    person: IPerson | {}
+type PersonResult = {
+    person?: IPerson 
 }
 
 type Action = {

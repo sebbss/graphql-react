@@ -1,11 +1,11 @@
 import { useQuery } from '@apollo/client';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { load } from '../../../store/actions';
 import { GET_ALL_PEOPLE } from '../../graphql-tasks';
 import PeoplePage from '../component';
 
-const PeopleContainer = ()=> {
+const PeopleContainer: React.FC = ()=> {
     const[page, setPage] = useState(1)
     const[name, setName] = useState("")
 
@@ -17,9 +17,9 @@ const PeopleContainer = ()=> {
             name:name.trim().length ? name.trim(): ""
         }
     })
-    useEffect(()=>{
+    useCallback(()=>{
         dispatch(load(loading))
-    },[loading])
+    },[loading, dispatch])
 
 
   return (
@@ -28,7 +28,7 @@ const PeopleContainer = ()=> {
       error={error}
       setPage={setPage}
       name={name}
-      page={+page}
+      page={page}
       loading={loading}
       setName={setName}/>
   )

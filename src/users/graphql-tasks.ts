@@ -1,7 +1,5 @@
-import {gql, ApolloClient, NormalizedCacheObject} from '@apollo/client/core'
-import { Dispatch } from 'redux';
-// import { getPeople, getPerson, searchPeople } from '../store/actions'
-import {GraphQLClient} from '../store/graphl-client'
+import {gql} from '@apollo/client/core'
+
 
 export const GET_ALL_PEOPLE = gql`
 query fetchPeople($page: Int, $name: String!){
@@ -21,7 +19,7 @@ query fetchPeople($page: Int, $name: String!){
 `;
 
 export const GET_ONE_PERSON = gql`
-query person($id: string){
+query person($id: String){
     person(id: $id) {
         name
         height

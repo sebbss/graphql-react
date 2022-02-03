@@ -5,6 +5,7 @@ import { Notification, KIND } from "baseui/notification";
 import { Pagination } from "baseui/pagination";
 import { StyledLink } from "baseui/link";
 import { Card, StyledBody, StyledAction } from "baseui/card";
+import {Spinner} from 'baseui/spinner';
 import { Input, SIZE as InputSize } from "baseui/input";
 import { Search } from "baseui/icon";
 import { Link } from "react-router-dom";
@@ -25,12 +26,12 @@ const ContentDiv = styled("div", {
   display: "flex",
   flexWrap: "wrap",
   alignContent: "center",
-  justifyContent: "left",
+  justifyContent: "center",
 });
 
 export const Container = styled("div", () => {
   return {
-    height: "100vh",
+
     marginTop: "10px",
   };
 });
@@ -59,7 +60,7 @@ const PeoplePage: React.FunctionComponent<Props> = ({
       return data?.fetchPeople?.results?.map((person, index) => (
         <div key={index}>
           <Card
-            overrides={{ Root: { style: { width: "328px" } } }}
+            overrides={{ Root: { style: { width: "328px", margin: '10px' } } }}
             title={person.name}
           >
             <StyledBody>
@@ -84,10 +85,10 @@ const PeoplePage: React.FunctionComponent<Props> = ({
             target: { value },
           }: React.ChangeEvent<HTMLInputElement>) => setName(value)}
           startEnhancer={<Search size="18px" />}
-          placeholder="Search Your favorite Character"
+          placeholder="Search For A Character"
           overrides={{
             Root: {
-              style: { width: "60%", marginTop: "10px", marginBottom: "10px" },
+              style: { width: "35%", marginTop: "10px", marginBottom: "10px" },
             },
           }}
           size={InputSize.default}
@@ -108,12 +109,17 @@ const PeoplePage: React.FunctionComponent<Props> = ({
         </Notification>
       )}
 
-      {loading && <h1>Loading ......</h1>}
+      {loading && <CenterEl><Spinner size={96}/></CenterEl>}
       {!loading && (
-        <ContentDiv>
+        <CenterEl>
+            <ContentDiv>
           {peopleCardsRender}
         </ContentDiv>
+
+        </CenterEl>
+        
       )}
+      <CenterEl>
       <Pagination
                 numPages={Math.ceil((data?.fetchPeople?.count || 82) / 10)}
                 currentPage={page}
@@ -123,6 +129,8 @@ const PeoplePage: React.FunctionComponent<Props> = ({
                     );
                 }}
             />
+      </CenterEl>
+      
     </Container>
   );
 };

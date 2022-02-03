@@ -1,5 +1,5 @@
 
-import React, { Component } from "react";
+import React from "react";
 import {
     BrowserRouter as Router,
     Routes,
@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Header from "../header"
 import PeopleContainer from "../users/peoplePage/container";
+import PersonContainer from "../users/personPage/container";
 
 const AppRoutes = () => {
     return (
@@ -14,18 +15,8 @@ const AppRoutes = () => {
         <Router>
             <Header/>
             <Routes>
-                {/* <Route
-                    exact
-                    path="/"
-                    component={PeopleListView}
-                />
-
-                <Route
-                    exact
-                    path="/:personId"
-                    component={PeopleDetailView}
-                />       */}
                 <Route path="/" element={<PeopleContainer/>}/>
+                <Route path="/:id" element={<PersonContainer/>}/>
             </Routes>
         </Router>
         

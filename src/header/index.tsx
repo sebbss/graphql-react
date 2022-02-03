@@ -2,8 +2,6 @@ import * as React from "react";
 import {
     AppNavBar, NavItemT,setItemActive
 } from "baseui/app-nav-bar";
-import { StyledLink } from "baseui/link";
-import { Link } from "react-router-dom";
 import { styled } from "baseui";
 
 const StyledDiv = styled("div", ()=>{
@@ -17,7 +15,7 @@ const Header = () => {
         {label: 'label', info: {id: 1}},
         {label: 'label', info: {id: 2}},
         {label: 'label', info: {id: 3}},
-        {label: 'label', info: {id: 4}},
+        {label: 'label', info: {id: 4}}
       ]);
 
 
@@ -37,7 +35,7 @@ const Header = () => {
     return (
         <StyledDiv>
              <AppNavBar
-            title={<Link to="/"><StyledLink>Star wars Characters</StyledLink></Link>}
+            title="Star wars Characters"
             mainItems={mainItems}
            onMainItemSelect={handleMainItemSelect}
         />
