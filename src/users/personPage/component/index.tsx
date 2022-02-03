@@ -45,7 +45,7 @@ const PersonPage: React.FC<Props> = ({
                     <p> Height: {data?.person?.height + ' meters'} </p>
                     <p>Gender: {data?.person?.gender}</p>
                     <p>Mass: {data?.person?.mass}</p>
-                    <StyledLink target="_blank" href={data?.person?.homeworld}>HomeWorld</StyledLink>
+                    <p>Homeworld: {data?.person?.homeworld}</p>
             </StyledBody>
 
             </Card>

@@ -20,7 +20,7 @@ export interface Props {
   setName(text: string): void;
 }
 
-const ContentDiv = styled("div", {
+export const ContentDiv = styled("div", {
   width: "80%",
   margin: "10px",
   display: "flex",
@@ -63,12 +63,9 @@ const PeoplePage: React.FunctionComponent<Props> = ({
             overrides={{ Root: { style: { width: "328px", margin: '10px' } } }}
             title={person.name}
           >
-            <StyledBody>
-              Height: {person.height} <br />
-            </StyledBody>
             <StyledAction>
               <Link to={`/${getId(index)}`}>
-                <StyledLink>View</StyledLink>
+                <StyledLink>Details</StyledLink>
               </Link>
             </StyledAction>
           </Card>
